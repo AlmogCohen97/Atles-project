@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAq9FEA+vv7AEboZQD8+/sAPvFfAK0BHgAv+VQArQAgALkdGwC4HB0AP/BaAPz9/QBF81sAL/VVALQPHAB/85UArAIbADL7VgA371QAL/lTAP///wAw+VMAOvReAPv9/AAt9VQARfNTADD1VAAv+1UArhoYAPj4+AAw+lcAWeBgAPr6+gC+KxcAaOx+AHjvjQAy+lYAMPhTADbyWQBa6XUA/Pz8AP7p7QA981cAMfpVAP7m7AD3/PsA/v7+AC/2VgBB9FsAbOuFADD6VAAx+lQAKPVQAEfyZgD5+fkAryoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALi4uLi4uLi4uLi4uLi4uLi4UFBQUFBQlDjMULi4ULhQuNi4UKRw3MwcHBwgsIBQULi4dBQcHBzMzBwcHBxAUFC4ULQkHBwczMwcHBwchAxQuFA4HBwcHMQIHBwcHBzMULjYHBwciDzQADQcHBwcaFC4HBwczBDUeKwYHBwcHLzMuBwcHMycjGAcHBwcHBxMzLgcHBzMHBwcHBwcHHxkzMy4UBzMHBwcHBwcHBwczMxQuLgozKjMzBwcHBwcWJCYULhQXETMHBwcHBwcHGxEBFC4UFAwVMwcHBwcHBzIwLhQuFBQUCwczEgcHBwcuLi4oLi4ULi4gLgczBxQuLi4UFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'></script>
+    <title>Atlas-app</title>
+    <script src="JS/app.js" defer type="module"></script>
+    <link rel="stylesheet" href="app.css">
+     
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="container-fluid bg-dark">
+        <div class="continer">
+           <div class="row">
+            <div class="d-flex col-11 col-lg-6 justify-content-around text-white">
+                <h3 class="logo p-0 display-4 ms-2 my-auto d-none d-md-block"> <a href="index.html" class="text-white"><i class="fa fa-globe" aria-hidden="true"></i></a></h3>
+                <ul class="nav my-auto" >                    
+                    <li id="all">ALL</li>
+                    <li  id="israel" >Israel</li>
+                    <li id="usa">USA</li>
+                    <li id="thailand">Thailand</li>
+                    <li id="uk">UK</li>
+                    <li id="brazil">Brazil</li>
+                </ul>
+            </div>
+                <div class="d-flex col-12 mx-auto col-lg-4 d-lg-inline-block justify-content-around my-3" id="inputs">
+                   
+                    <div class="d-flex border col-6 col-lg-10 text-white mb-1">
+                        <input type="text" class="border-0 col-11" placeholder="search by name.." id="id_search">
+                        <i class="fa fa-search my-auto me-2 display-5" aria-hidden="true" id="searchBtn"></i>
+                    </div>
+                    
+                    <select id="sort_id" class="form-check col-5 col-lg-10">
+                         <option value="" class="text-bg-secondary">Sort List By..</option>
+                         <option value="name.common">name</option>
+                        <option value="population">population</option>
+                        <option value="subregion">region</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="btn-outline-light btn d-none" id="return" onclick=history.back()>return</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- MAIN -->
+
+    <main class="pb-5">
+        <div class="container">
+            <div id="id_message" class=" bg-black mt-5 text-white m-auto p-3 text-center d-none" style="border-radius: 16px;">               
+                <h3>Sorry,the contry cannot be found</h3> 
+                <p class="mx-auto">please try again</p> 
+                <button class="btn btn-white btn-outline-light text-white" id="closeBtn">close</button>
+            </div>
+            <div id="id_loading" class="loading text-center pt-3" >
+                <img src="images/loading.gif" alt="loading" > 
+                <p class="display-3 text-white">Loading...</p>
+              </div>
+            <div class="row justify-content-around" id="id_row">
+            </div>
+        </div>
+    </main>
+
+    <footer class=" bg-black">
+        <div class="pre-Footer container-fluid bg-dark w-100 p-0  d-flex justify-content-end me-5 d-none" >
+            <div class="col-11 col-md-6 col-lg-4 py-1">
+                <select id="id_select" class="m-1 form-select "><option>Choose Contry..</option></select>
+            </div>
+        </div>
+        <div  class="Footer container mt-2 bg d-block d-md-flex justify-content-between px-5 mx-auto">
+            <h5><i class="fa fa-copyright pt-4" aria-hidden="true"></i> 2022 Almog Cohen, Inc</h5>
+            <div>
+                <div class="display-6 ms-4 ps-5">
+                    <a href="https://github.com/AlmogCohen97"><i class="fa fa-github p-2" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/almog-cohen-a48680248/"><i class="fa fa-linkedin-square  p-2" aria-hidden="true"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=9720509403040"><i class="fa fa-whatsapp  p-2" aria-hidden="true"></i></a>
+                    
+                </div>
+            </div>    
+        </div>
+    </footer>
+
+</body>
+</html>
